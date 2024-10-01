@@ -1,38 +1,7 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 
 # --- Define Functions for Each Page ---
-
-st.markdown("""
-    <style>
-    .sidebar .sidebar-content {
-        background-color: #f0f0f5;
-    }
-    .sidebar .sidebar-content h2 {
-        color: #ff6347;
-        font-size: 24px;
-    }
-    .menu-item {
-        background-color: #ff6347;
-        color: white;
-        padding: 10px;
-        margin: 5px;
-        border-radius: 5px;
-        text-align: center;
-        font-size: 18px;
-        cursor: pointer;
-    }
-    .menu-item:hover {
-        background-color: #ff4500;
-    }
-    </style>
-    <div class="menu-item" onclick="window.location.href='#home';">Home</div>
-    <div class="menu-item" onclick="window.location.href='#memory';">Memory Page</div>
-    <div class="menu-item" onclick="window.location.href='#puzzle';">Puzzle Page</div>
-    <div class="menu-item" onclick="window.location.href='#writings';">Writings Page</div>
-    <div class="menu-item" onclick="window.location.href='#music';">Music Section</div>
-    <div class="menu-item" onclick="window.location.href='#movies';">Movies & Shows</div>
-    <div class="menu-item" onclick="window.location.href='#hidden';">Hidden Page</div>
-    """, unsafe_allow_html=True)
 
 def home_page():
     st.title("🎉 Happy Birthday! 🎉")
@@ -63,23 +32,37 @@ def hidden_page():
     st.title("🕵️‍♀️ Hidden Page")
     st.write("Secrets hidden within this page... Can you find them?")
 
-# --- Sidebar Menu ---
-# st.sidebar.title("Navigation")
-# page = st.sidebar.radio("Go to", ["Home", "Memory Page", "Puzzle Page", "Writings Page", "Music Section", "Movies & Shows", "Hidden Page"])
 
-# --- Page Routing ---
-if st.experimental_get_query_params().get("page", ["home"])[0] == "home":
+# Sidebar menu with streamlit-option-menu
+with st.sidebar:
+    selected = option_menu(
+        "Navigation", 
+        ["Home", "Memory Page", "Puzzle Page", "Writings Page", "Music Section", "Movies & Shows", "Hidden Page"], 
+        icons=['house', 'camera', 'puzzle', 'pen', 'music-note', 'film', 'lock'],
+        menu_icon="cast", 
+        default_index=0,
+        styles={
+            "container": {"padding": "5!important", "background-color": "auto"},
+            "icon": {"color": "orange", "font-size": "25px"}, 
+            "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+            "nav-link-selected": {"background-color": "#ff6347"},
+        }
+    )
+
+
+
+# Page content based on selection
+if selected == "Home":
     st.title("🎉 Happy Birthday! 🎉")
-    st.write("Wishing you a wonderful day filled with love and joy!")
-elif st.experimental_get_query_params().get("page", ["home"])[0] == "memory":
+elif selected == "Memory Page":
     st.title("📸 Memory Page")
-elif st.experimental_get_query_params().get("page", ["home"])[0] == "puzzle":
+elif selected == "Puzzle Page":
     st.title("🧩 Puzzle Page")
-elif st.experimental_get_query_params().get("page", ["home"])[0] == "writings":
+elif selected == "Writings Page":
     st.title("✍️ Writings Page")
-elif st.experimental_get_query_params().get("page", ["home"])[0] == "music":
+elif selected == "Music Section":
     st.title("🎶 Music Section")
-elif st.experimental_get_query_params().get("page", ["home"])[0] == "movies":
+elif selected == "Movies & Shows":
     st.title("🎬 Movies and Shows")
-elif st.experimental_get_query_params().get("page", ["home"])[0] == "hidden":
+elif selected == "Hidden Page":
     st.title("🕵️‍♀️ Hidden Page")
