@@ -64,8 +64,8 @@ def hidden_page():
     st.write("Secrets hidden within this page... Can you find them?")
 
 # --- Sidebar Menu ---
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "Memory Page", "Puzzle Page", "Writings Page", "Music Section", "Movies & Shows", "Hidden Page"])
+# st.sidebar.title("Navigation")
+# page = st.sidebar.radio("Go to", ["Home", "Memory Page", "Puzzle Page", "Writings Page", "Music Section", "Movies & Shows", "Hidden Page"])
 
 # --- Page Routing ---
 if st.experimental_get_query_params().get("page", ["home"])[0] == "home":
