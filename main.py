@@ -74,7 +74,7 @@ def Shushee_Special():
     else:
         st.write("Pkkaaaaaaaa")
         st.write("")
-        st.image("cute_with_shushee3.jpeg", caption="Memory 2", use_column_width=True)
+        st.image("media/cute_with_shushee3.jpeg", caption="Memory 2", use_column_width=True)
 
 
 # Writings Page: Interactive Writing
