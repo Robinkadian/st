@@ -70,11 +70,11 @@ def Shushee_Special():
     elif level == 'Shusheeeeee':
         st.write("Pkkaaaa")
         st.write("")
-        st.image("media/Cute_with_shushee2.jpeg", caption="Memory 2", use_column_width=True)
+        st.image("media/cute_with_shushee2.jpeg", caption="Memory 2", use_column_width=True)
     else:
         st.write("Pkkaaaaaaaa")
         st.write("")
-        st.image("media/Cute_with_shushee3.jpeg", caption="Memory 2", use_column_width=True)
+        st.image("cute_with_shushee3.jpeg", caption="Memory 2", use_column_width=True)
 
 
 # Writings Page: Interactive Writing
