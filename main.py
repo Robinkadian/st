@@ -37,7 +37,9 @@ def HappyBirthday():
     image = Image.open("media/Cute_with_shushee.jpeg")
     st.image(image, caption="Happy BirthDay ;-)", use_column_width=True)
 
-    
+    for i in range(10):
+        st.balloons()
+        time.sleep(0.5)
         
     # Birthday picture
 
