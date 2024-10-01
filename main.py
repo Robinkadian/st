@@ -41,8 +41,8 @@ def HappyBirthday():
 
 # Memory Page: Pictures and Videos
 def Memories():
-    st.title("Memory Lane")
-    st.write("A collection of our memories together.")
+    st.title("Fotosssss......")
+    st.write("A collection of our fotos together from iFone")
     
     # Example to display multiple images in a grid layout
     col1, col2 = st.columns(2)
