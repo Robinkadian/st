@@ -5,7 +5,7 @@ import streamlit as st
 def home_page():
     st.title("🎉 Happy Birthday! 🎉")
     st.write("Wishing you a wonderful day filled with love and joy!")
-    st.image("your_image.jpg", caption="A special birthday for someone special!", use_column_width=True)
+    st.image("media/RobinPassportSizePhoto.jpeg.jpg", caption="A special birthday for someone special!", use_column_width=True)
 
 def memory_page():
     st.title("📸 Memory Page")
