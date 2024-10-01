@@ -1,68 +1,158 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
+import random
+import time
+import base64
+from PIL import Image
+import qrcode
 
-# --- Define Functions for Each Page ---
+# Set wide layout for better design
+st.set_page_config(layout="wide")
 
-def home_page():
-    st.title("🎉 Happy Birthday! 🎉")
-    st.write("Wishing you a wonderful day filled with love and joy!")
-    st.image("media/RobinPassportSizePhoto.jpeg", caption="A special birthday for someone special!", use_column_width=True)
+# Global variables for dynamism
+visit_number = random.randint(1, 100)
 
+# Function to display balloons
+def show_balloons():
+    for i in range(10):
+        st.balloons()
+        time.sleep(0.5)
+
+# Function to play background music
+def play_music():
+    st.audio("path_to_music.mp3", autoplay=True)
+    st.write("Music goes here")
+
+# First Page: Birthday Wish Page
+def first_page():
+    st.title("Happy Birthday, [Her Name]!")
+    
+    # Display balloons on first visit
+    if visit_number % 2 == 0:
+        show_balloons()
+
+    # Display music button
+    if st.button("Play Music"):
+        play_music()
+        
+    # Birthday picture
+    image = Image.open("media/RobinPassportSizePhoto.jpeg")
+    st.image(image, caption="A special picture for a special day!", use_column_width=True)
+
+# Memory Page: Pictures and Videos
 def memory_page():
-    st.title("📸 Memory Page")
-    st.write("Here are all our beautiful memories together.")
+    st.title("Memory Lane")
+    st.write("A collection of our memories together.")
+    
+    # Example to display multiple images in a grid layout
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image("media/RobinPassportSizePhoto.jpeg", caption="Memory 1", use_column_width=True)
+    with col2:
+        st.image("media/RobinPassportSizePhoto.jpeg", caption="Memory 2", use_column_width=True)
+    
+    st.video("path_to_video.mp4")
 
+# Puzzle Page: Fun Puzzles with Rewards
 def puzzle_page():
-    st.title("🧩 Puzzle Page")
-    st.write("Solve puzzles and win surprises!")
+    st.title("Solve the Puzzle!")
+    
+    level = st.radio("Choose a level:", ('Easy', 'Medium', 'Hard'))
+    
+    if level == 'Easy':
+        st.write("Solve this simple puzzle: [Puzzle content]")
+    elif level == 'Medium':
+        st.write("Here’s a medium level puzzle: [Puzzle content]")
+    else:
+        st.write("Time to challenge yourself: [Puzzle content]")
 
+    if st.button("Submit Answer"):
+        st.write("Great! Here’s your reward:")
+        st.audio("reward_audio.mp3", autoplay=True)
+
+# Writings Page: Interactive Writing
 def writings_page():
-    st.title("✍️ Writings Page")
-    st.write("Here are some special writings just for you.")
+    st.title("Our Story in Words")
+    
+    st.write("This page has some special writings for you!")
+    
+    if st.button("Reveal More"):
+        st.write("Here’s more text: [special message]")
+    
+    if st.button("Click for a Surprise"):
+        st.image("surprise_image.jpg", use_column_width=True)
 
+# Music Section: Favorite Music
 def music_page():
-    st.title("🎶 Music Section")
-    st.write("Listen to the music that makes us feel special.")
+    st.title("Music Time!")
+    st.write("Some of our favorite tracks together.")
+    
+    st.audio("song1.mp3", start_time=0)
+    st.write("Anthem: A song that reminds us of great moments!")
 
+# Movies and Shows Section: List of Experiences
 def movies_page():
-    st.title("🎬 Movies and Shows")
-    st.write("Movies and shows we've enjoyed together.")
+    st.title("Movies and Shows")
+    st.write("Here are some of the movies and shows we watched together:")
+    
+    movie_list = [
+        "Movie 1: Watched in theater",
+        "Show 1: Watched on laptop",
+        "Movie 2: Watched on phone"
+    ]
+    
+    for movie in movie_list:
+        st.write(f"- {movie}")
 
+# Hidden Things: Puzzles and Coded Messages
 def hidden_page():
-    st.title("🕵️‍♀️ Hidden Page")
-    st.write("Secrets hidden within this page... Can you find them?")
+    st.title("Hidden Surprises")
+    
+    morse_code = "... --- ..."
+    st.write(f"Can you figure out this code: {morse_code}")
+    
+    # Add hints (no reveal option)
+    st.write("Hint: It's something you use to call for help...")
 
+# Generate QR code
+def generate_qr_code(text):
+    img = qrcode.make(text)
+    st.image(img)
 
-# Sidebar menu with streamlit-option-menu
-with st.sidebar:
-    selected = option_menu(
-        "Navigation", 
-        ["Home", "Memory Page", "Puzzle Page", "Writings Page", "Music Section", "Movies & Shows", "Hidden Page"], 
-        icons=['house', 'camera', 'puzzle', 'pen', 'music-note', 'film', 'lock'],
-        menu_icon="cast", 
-        default_index=0,
-        styles={
-            "container": {"padding": "5!important", "background-color": "auto"},
-            "icon": {"color": "orange", "font-size": "25px"}, 
-            "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-            "nav-link-selected": {"background-color": "#ff6347"},
-        }
-    )
+# Dynamism: Pages show something different on each visit
+def dynamic_effects():
+    random_effect = random.choice(['Show image', 'Change color', 'Surprise text'])
+    if random_effect == 'Show image':
+        st.image("dynamic_image.jpg", caption="Something different every time!")
+    elif random_effect == 'Change color':
+        st.markdown('<style>body {background-color: lightblue;}</style>', unsafe_allow_html=True)
+    elif random_effect == 'Surprise text':
+        st.write("You found the surprise text!")
 
+# Main Function to control page navigation
+def main():
+    st.sidebar.title("Navigate")
+    options = ["First Page", "Memory Page", "Puzzle Page", "Writings Page", 
+               "Music Section", "Movies and Shows Section", "Hidden Things"]
+    
+    choice = st.sidebar.radio("Select a page:", options)
+    
+    if choice == "First Page":
+        first_page()
+    elif choice == "Memory Page":
+        memory_page()
+    elif choice == "Puzzle Page":
+        puzzle_page()
+    elif choice == "Writings Page":
+        writings_page()
+    elif choice == "Music Section":
+        music_page()
+    elif choice == "Movies and Shows Section":
+        movies_page()
+    elif choice == "Hidden Things":
+        hidden_page()
 
+    dynamic_effects()
 
-# Page content based on selection
-if selected == "Home":
-    st.title("🎉 Happy Birthday! 🎉")
-elif selected == "Memory Page":
-    st.title("📸 Memory Page")
-elif selected == "Puzzle Page":
-    st.title("🧩 Puzzle Page")
-elif selected == "Writings Page":
-    st.title("✍️ Writings Page")
-elif selected == "Music Section":
-    st.title("🎶 Music Section")
-elif selected == "Movies & Shows":
-    st.title("🎬 Movies and Shows")
-elif selected == "Hidden Page":
-    st.title("🕵️‍♀️ Hidden Page")
+# Run the app
+if __name__ == "__main__":
+    main()
