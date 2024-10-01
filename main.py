@@ -25,6 +25,9 @@ def play_music():
 def HappyBirthday():
     st.title("!!!!!!!!!!!!!!!!!!!Happy Birthday, NAZNEEN!!!!!!!!!!!!!!!!!!!")
 
+    # Display music button
+    play_music()
+
     image = Image.open("media/Cute_with_shushee.jpeg")
     st.image(image, caption="Happy BirthDay ;-)", use_column_width=True)
     
@@ -32,9 +35,7 @@ def HappyBirthday():
     if visit_number % 2 == 0:
         show_balloons()
 
-    # Display music button
-    if st.button("Play Music"):
-        play_music()
+    
         
     # Birthday picture
 
