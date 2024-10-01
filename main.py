@@ -163,7 +163,7 @@ What else was eternal, was that GoodBye Kiss""")
         st.video("media/tie_hair.mp4")
         
     
-    if st.button("Click for a Surprise"):
+    if st.button("Waps dba"):
         st.image("media/cute_video_call.jpeg", use_column_width=True)
 
 # Music Section: Favorite Music
