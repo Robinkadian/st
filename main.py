@@ -3,7 +3,6 @@ import random
 import time
 import base64
 from PIL import Image
-#import qrcode
 
 # Set wide layout for better design
 st.set_page_config(layout="wide")
@@ -112,11 +111,6 @@ def hidden_page():
     
     # Add hints (no reveal option)
     st.write("Hint: It's something you use to call for help...")
-
-# Generate QR code
-# def generate_qr_code(text):
-#     img = qrcode.make(text)
-#     st.image(img)
 
 # Dynamism: Pages show something different on each visit
 def dynamic_effects():
