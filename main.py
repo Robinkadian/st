@@ -168,7 +168,7 @@ def Music():
     st.write("Savdhaan!!! Annthem k time ikdm shaant ;-)")
 
     if st.button("PLAY"):
-        st.image("media/haiDilYeMera_poster.jpeg", use_column_width=True)
+        st.image("media/haiDilYeMera_poster.jpg", use_column_width=True)
         st.audio("media/128-Hai Dil Ye Mera - Hate Story 2 128 Kbps.mp3", start_time=0)
         st.write("Ye wala sunte hi kya yaad aata hai....Bhnchod bhot kuchh")
 
