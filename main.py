@@ -23,17 +23,19 @@ def play_music():
 
 # First Page: Birthday Wish Page
 def HappyBirthday():
-    st.title("!!!!!!!!!!!!!!!!!!!Happy Birthday, NAZNEEN!!!!!!!!!!!!!!!!!!!")
+    st.title("Happy Birthday, NAZNEEN")
+
+    st.write("")
+    st.write("")
+
+    st.write("Side menu m jana to...")
 
     # Display music button
-    play_music()
+    st.audio("media/happy-birthday-my-kitty-120918.mp3", autoplay=True)
+    st.write("Happy Birthday")
 
     image = Image.open("media/Cute_with_shushee.jpeg")
     st.image(image, caption="Happy BirthDay ;-)", use_column_width=True)
-    
-    # Display balloons on first visit
-    if visit_number % 2 == 0:
-        show_balloons()
 
     
         
