@@ -2,6 +2,38 @@ import streamlit as st
 
 # --- Define Functions for Each Page ---
 
+st.markdown("""
+    <style>
+    .sidebar .sidebar-content {
+        background-color: #f0f0f5;
+    }
+    .sidebar .sidebar-content h2 {
+        color: #ff6347;
+        font-size: 24px;
+    }
+    .menu-item {
+        background-color: #ff6347;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    .menu-item:hover {
+        background-color: #ff4500;
+    }
+    </style>
+    <div class="menu-item" onclick="window.location.href='#home';">Home</div>
+    <div class="menu-item" onclick="window.location.href='#memory';">Memory Page</div>
+    <div class="menu-item" onclick="window.location.href='#puzzle';">Puzzle Page</div>
+    <div class="menu-item" onclick="window.location.href='#writings';">Writings Page</div>
+    <div class="menu-item" onclick="window.location.href='#music';">Music Section</div>
+    <div class="menu-item" onclick="window.location.href='#movies';">Movies & Shows</div>
+    <div class="menu-item" onclick="window.location.href='#hidden';">Hidden Page</div>
+    """, unsafe_allow_html=True)
+
 def home_page():
     st.title("🎉 Happy Birthday! 🎉")
     st.write("Wishing you a wonderful day filled with love and joy!")
@@ -36,17 +68,18 @@ st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Memory Page", "Puzzle Page", "Writings Page", "Music Section", "Movies & Shows", "Hidden Page"])
 
 # --- Page Routing ---
-if page == "Home":
-    home_page()
-elif page == "Memory Page":
-    memory_page()
-elif page == "Puzzle Page":
-    puzzle_page()
-elif page == "Writings Page":
-    writings_page()
-elif page == "Music Section":
-    music_page()
-elif page == "Movies & Shows":
-    movies_page()
-elif page == "Hidden Page":
-    hidden_page()
+if st.experimental_get_query_params().get("page", ["home"])[0] == "home":
+    st.title("🎉 Happy Birthday! 🎉")
+    st.write("Wishing you a wonderful day filled with love and joy!")
+elif st.experimental_get_query_params().get("page", ["home"])[0] == "memory":
+    st.title("📸 Memory Page")
+elif st.experimental_get_query_params().get("page", ["home"])[0] == "puzzle":
+    st.title("🧩 Puzzle Page")
+elif st.experimental_get_query_params().get("page", ["home"])[0] == "writings":
+    st.title("✍️ Writings Page")
+elif st.experimental_get_query_params().get("page", ["home"])[0] == "music":
+    st.title("🎶 Music Section")
+elif st.experimental_get_query_params().get("page", ["home"])[0] == "movies":
+    st.title("🎬 Movies and Shows")
+elif st.experimental_get_query_params().get("page", ["home"])[0] == "hidden":
+    st.title("🕵️‍♀️ Hidden Page")
