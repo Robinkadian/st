@@ -179,7 +179,7 @@ def Movies():
     st.title("Movies to MashaAllah bhot dekhi, best out of best")
     st.write("Dekh niche likh rha hu....")
 
-    st.image("media/rockstar_poster.jpeg", use_column_width=True)
+    st.image("media/rockstar_poster.jpg", use_column_width=True)
     movie_list = [
         "Rockstar: First Theater movie watched",
         "Rick and Morty: Gaand faad...Ho gya yaar complete :-(",
